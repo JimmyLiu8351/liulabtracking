@@ -10,11 +10,25 @@
     - [Templates](http://www.cplusplus.com/doc/oldtutorial/templates/) - haven't read yet
 
 ##### Random Knowledge
-- Install latest CUDA 9.2/10.x version
 
 ##### Tasks
 - Choose a few frames to do analysis on
 - Find center of mass and a point in the eye and then do starburst
 - Plot differentials of the different rays
 - Ask teledyne person about preferred language for drivers + CUDA version
+    - Install latest CUDA 9.X/10.X version
 - Run speed tests for graphics card loading
+
+
+### Nov 12th
+##### Links
+- [Installing opencv for c++](http://techawarey.com/programming/install-opencv-c-c-in-ubuntu-18-04-lts-step-by-step-guide/)
+    - Remember to move the opencv2 file out of opencv4 file in /usr/local/include so that it doesn't give an error in VSCode
+    - Command to compile: 
+    ```bash
+    g++ input.cpp -o outputfilename `pkg-config --cflags --libs opencv`
+    ```
+
+##### Tasks
+- Look at *fast radial symmetry transform*
+- Try out code from tracker app on [github](http://github.com/coxlab/eyetracker)
