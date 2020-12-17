@@ -60,4 +60,54 @@
 - Testing with a black circle in a white background first
     - Image is 400 x 400 pixels / 11.2cm on screen
     - Circle is 7.8cm of diameter -> 139 pixels radius
-    - Weird glitch where the focus is on the top left
+    - Weird glitch where the focus is on the top left - fixed, coordinate error
+
+### Nov 23rd
+##### Links
+ - [OpenCV thresholding](https://docs.opencv.org/master/d7/d4d/tutorial_py_thresholding.html)
+ 
+##### Notes
+- frst is working but the corneal glare is too strong, going to try and mitigate it
+
+##### Tasks
+- Try and contact the author of the libraries - get his code for research purposes
+
+### December 3rd
+##### Links
+- [Create your own contour](https://stackoverflow.com/questions/14161331/creating-your-own-contour-in-opencv-using-python)
+
+##### Notes
+- Having trouble with starburst, most likely because of different coordinate systems between opencv and numpy, looking into this
+- It seems that opencv functions take in (x, y) while indexing is (y, x), kind of confusing
+- Top left is zero though
+- Don't need to use Sobel for intensity, can just use comparisons so that should save some computation power
+- Starburst could definitely still be optimized, will look into it later
+- Added a blur to after the rough corneal remove is very effective for frst
+
+##### Meeting Notes
+- 3 scenarios, when corneal reflection is at the edge, ignore the ones at the edge
+    - Other scenario is corneal reflection is at the center
+    - No corneal reflection at all
+- Algorithm: fill up gap if pupil is smaller than starburst size thresholdex
+    - Backup algorithm use simple thresholding to cover up the gap
+- Using derivates on the starburst to better counter the starburst
+    - If corneal reflection in the center, you see one positive slope
+    - If corneal reflection in the middle, two slopes, use the value of the slope to determine which one is from the corneal reflection
+    - If no corneal reflection, you see one positive slope 
+    - If corneal reflection at the boundary, one positive slope, is very high
+- Parallelization of starburst algorithm
+
+
+### December 11th
+##### Links
+- [Find point by angle and length](https://stackoverflow.com/questions/22252438/draw-a-line-using-an-angle-and-a-point-in-opencv)
+- [Line iterator](https://stackoverflow.com/questions/32328179/opencv-3-0-lineiterator)
+##### Notes
+- If there is a corneal reflection, there should be a positive peak and then negative peak, if it's the edge of the pupil then it should be just a positive peak
+
+### December 12th
+##### Notes
+- Tried to multiprocess the starburst by line but each iteration of starburst is inconsistent in the number of points that come from each iteration of starburst
+- Need some way for if there's not enough points in the contour then use back-up algorithm
+- REMEMBER TO BLUR THE IMAGE BEFORE USING STARBURST SO IMPORTANT!!!
+- Need to redo the thing to redo frst every 5 frames
