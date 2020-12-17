@@ -111,3 +111,22 @@
 - Need some way for if there's not enough points in the contour then use back-up algorithm
 - REMEMBER TO BLUR THE IMAGE BEFORE USING STARBURST SO IMPORTANT!!!
 - Need to redo the thing to redo frst every 5 frames
+
+
+### December 17th
+##### Links
+- [Multiprocessing](https://docs.python.org/3/library/multiprocessing.html)
+- [Video writer on ubuntu](https://answers.opencv.org/question/182488/not-able-to-save-video-using-cv2videowriter-on-ubuntu-1604/)
+##### Notes
+- Doing speed testing on the lab computer today
+- Non-realtime scheduler, 16 threads around 360 iterations/second
+- Realtime scheduler only doing about 60 iterations/second
+    - Did some profiling, frst and rough corneal remove taking the longest time
+    - Did optimization on rough corneal remove, improved to around 75 iterations/second
+    - Realtime scheduler is hot garbage, got better results just running single-threaded
+- Maybe look to optimize non realtime scheduler, I think I can push it even further with thread optimizations
+- I don't know how but my single-thread thing is running at 200 FPS
+##### Next
+- Realtime processing, maybe some kind of system where frames get processed as they come in
+- Measure real absolute time of functions
+- Add condition with derivatives, second positive
