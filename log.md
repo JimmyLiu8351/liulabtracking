@@ -130,3 +130,9 @@
 - Realtime processing, maybe some kind of system where frames get processed as they come in
 - Measure real absolute time of functions
 - Add condition with derivatives, second positive
+
+
+### December 26th
+##### Links
+- [Queue and pipe time](https://stackoverflow.com/questions/8463008/multiprocessing-pipe-vs-queue)
+- [Timing](https://stackoverflow.com/questions/1938048/high-precision-clock-in-python#:~:text=Python%20on%20Windows%20uses%20%2B%2D,you're%20measuring%20execution%20time.)
