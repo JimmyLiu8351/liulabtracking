@@ -136,3 +136,28 @@
 ##### Links
 - [Queue and pipe time](https://stackoverflow.com/questions/8463008/multiprocessing-pipe-vs-queue)
 - [Timing](https://stackoverflow.com/questions/1938048/high-precision-clock-in-python#:~:text=Python%20on%20Windows%20uses%20%2B%2D,you're%20measuring%20execution%20time.)
+
+
+### January 5th
+##### Meeting
+- Scrap FRST and try using thresholding method
+     1. Apply threshold to only get pixels < threshold value
+     2. Figure out max and min value of the pixels less than threshold value
+     3. Subtract pixel value from maximum pixel value
+     4. New values - brightest becomes zero, darkest becomes difference from max
+     5. Use new pixel values to do center of mass (weighted average) calculation
+- I'm gonna try double starburst
+- Also gonna try hough circle transform timing
+
+### January 9th
+##### Links
+- [Show numpy image in jupyter notebook](https://stackoverflow.com/questions/46236180/opencv-imshow-will-cause-jupyter-notebook-crash)
+- [Hough Transform](https://docs.opencv.org/3.4/dd/d1a/group__imgproc__feature.html#ga47849c3be0d0406ad3ca45db65a25d2d)
+- [Canny edge detector](https://docs.opencv.org/3.4/dd/d1a/group__imgproc__feature.html#gga073687a5b96ac7a3ab5802eb5510fe65ab1bf00a90864db34b2f72fa76389931d)
+- [Param1 and Param2 of Hough Transform](https://dsp.stackexchange.com/questions/22648/in-opecv-function-hough-circles-how-does-parameter-1-and-2-affect-circle-detecti)
+##### Notes
+- Threshold method actually pretty good, just requires good cropping and blurring
+    - Around 1227 iterations/second on my laptop
+    - < 0.1ms for thresholding
+    - Total is around 3.6ms
+- Hough Circle Transform: 0.3ms
